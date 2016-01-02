@@ -27,19 +27,17 @@ class OneSampleTTest extends TTestBasic {
   /**
     * Performs a  two-sided t-test evaluating the null hypothesis that the mean of the population from
     * which sample is drawn equals mu
-    * <p>
-    * Returns <code>true</code> iff the null hypothesis can be
-    * rejected with confidence <code>1 - alpha</code>.  To
-    * perform a 1-sided test, use <code>alpha * 2</code></p>
-    * <p>
-    * <strong>Examples:</strong><br><ol>
-    * <li>To test the (2-sided) hypothesis <code>sample mean = mu </code> at
-    * the 95% level, use <br><code>tTest(mu, sample, 0.05) </code>
-    * </li>
-    * <li>To test the (one-sided) hypothesis <code> sample mean < mu </code>
+    * Returns true iff the null hypothesis can be
+    * rejected with confidence 1 - alpha.  To
+    * perform a 1-sided test, use alpha * 2
+
+    * To test the (2-sided) hypothesis sample mean = mu at
+    * the 95% level, use tTest(mu, sample, 0.05)
+    *
+    * To test the (one-sided) hypothesis  sample mean < mu
     * at the 99% level, first verify that the measured sample mean is less
-    * than <code>mu</code> and then use
-    * <br><code>tTest(mu, sample, 0.02) </code>
+    * than mu and then use
+    * tTest(mu, sample, 0.02)
     *
     * @param mu constant value to compare sample mean against
     * @param sample array of sample data values
@@ -51,15 +49,15 @@ class OneSampleTTest extends TTestBasic {
   }
 
   /**
-    * Returns the <i>observed significance level</i>, or
-    * <i>p-value</i>, associated with a one-sample, two-tailed t-test
-    * comparing the mean of the input array with the constant <code>mu</code>.
-    * <p>
+    * Returns the observed significance level, or
+    * p-value, associated with a one-sample, two-tailed t-test
+    * comparing the mean of the input array with the constant mu.
+    *
     * The number returned is the smallest significance level
     * at which one can reject the null hypothesis that the mean equals
-    * <code>mu</code> in favor of the two-sided alternative that the mean
-    * is different from <code>mu</code>. For a one-sided test, divide the
-    * returned value by 2.</p>
+    * mu in favor of the two-sided alternative that the mean
+    * is different from mu. For a one-sided test, divide the
+    * returned value by 2.
     *
     * @param mu constant value to compare sample mean against
     * @param sample array of sample data values
