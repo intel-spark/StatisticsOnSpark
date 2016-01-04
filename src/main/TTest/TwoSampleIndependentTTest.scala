@@ -69,7 +69,7 @@ class TwoSampleIndependentTTest {
     val m1 = sample1.sum() / n1
     val m2 = sample2.sum() / n2
     val v1 = sample1.map(d => (d - m1) * (d - m1)).sum() / (n1 - 1)
-    val v2 = sample1.map(d => (d - m2) * (d - m2)).sum() / (n2 - 1)
+    val v2 = sample2.map(d => (d - m2) * (d - m2)).sum() / (n2 - 1)
     val t: Double = math.abs((m1 - m2) / FastMath.sqrt((v1 / n1) + (v2 / n2)))
     val degreesOfFreedom: Double = (((v1 / n1) + (v2 / n2)) * ((v1 / n1) + (v2 / n2))) /
       ((v1 * v1) / (n1 * n1 * (n1 - 1d)) + (v2 * v2) / (n2 * n2 * (n2 - 1d)))

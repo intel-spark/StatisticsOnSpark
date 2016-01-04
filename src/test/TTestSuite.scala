@@ -25,19 +25,47 @@ import org.apache.spark.{SparkConf, SparkContext}
 /**
   * Created by yuhao on 12/31/15.
   */
-object OneSampleTTestSuite {
+object TTestSuite {
+
+  Logger.getLogger("org").setLevel(Level.WARN)
+  Logger.getLogger("akka").setLevel(Level.WARN)
+  val conf = new SparkConf().setAppName("TallSkinnySVD").setMaster("local")
+  val sc = new SparkContext(conf)
 
   def main(args: Array[String]) {
+    OneSampleTTest
+    twoIndependentSampleTTest
+    pairedTwoSampleTTest
+  }
+
+  def OneSampleTTest(): Unit ={
     val observed = Array(100d, 200d, 300d, 400d)
     val mu = 2.5d
 
-    Logger.getLogger("org").setLevel(Level.WARN)
-    Logger.getLogger("akka").setLevel(Level.WARN)
-    val conf = new SparkConf().setAppName("TallSkinnySVD").setMaster("local")
-    val sc = new SparkContext(conf)
-
     assert(TestUtils.tTest(mu, observed, 0.05) == new OneSampleTTest().tTest(mu, sc.parallelize(observed), 0.05))
     assert(TestUtils.tTest(mu, observed) == new OneSampleTTest().tTest(mu, sc.parallelize(observed)))
+  }
+
+  def twoIndependentSampleTTest(): Unit ={
+    val sample1 = Array(100d, 200d, 300d, 400d)
+    val sample2 = Array(101d, 205d, 300d, 400d)
+
+    val rdd1 = sc.parallelize(sample1)
+    val rdd2 = sc.parallelize(sample2)
+
+    assert(TestUtils.tTest(sample1, sample2, 0.05) == new TwoSampleIndependentTTest().tTest(rdd1, rdd2, 0.05))
+    assert(TestUtils.tTest(sample1, sample2) == new TwoSampleIndependentTTest().tTest(rdd1, rdd2))
+  }
+
+  def pairedTwoSampleTTest(): Unit ={
+    val sample1 = Array(100d, 200d, 300d, 400d)
+    val sample2 = Array(101d, 202d, 300d, 400d)
+
+    val rdd1 = sc.parallelize(sample1)
+    val rdd2 = sc.parallelize(sample2)
+
+    assert(TestUtils.pairedTTest(sample1, sample2, 0.05) == new PairTwoSampleTTest().tTest(rdd1, rdd2, 0.05))
+    assert(TestUtils.pairedTTest(sample1, sample2) == new PairTwoSampleTTest().tTest(rdd1, rdd2))
   }
 
 }
