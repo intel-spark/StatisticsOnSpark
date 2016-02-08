@@ -14,18 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.math4.stat.inference
+package org.apache.spark.mllib.stat.test
 
-import org.apache.commons.math3.exception.TooManyIterationsException
 import org.apache.commons.math3.util.FastMath
-import org.apache.spark.Logging
 
 /**
  * We just found out KolmogorovSmirnovTest was included in Spark 1.6.
  * Instead of providing a new implementation, it better aligns with
  * users' interests if we can provide improvement or new functions based
- * on the Spark version. If you find something useful yet missing from Spark,
- * please go ahead and create an issue in the project. 
+ * on the Spark version. If you find something potentially useful yet missing
+ * from Spark, please go ahead and create an issue in the project.
  *
  */
 object KolmogorovSmirnovTest {
@@ -45,10 +43,7 @@ object KolmogorovSmirnovTest {
       sign *= -1
       i += 1
     }
-    if (i == maxIterations) {
-      throw new TooManyIterationsException(maxIterations)
-    }
-    return partialSum * 2
+    partialSum * 2
   }
 }
 
