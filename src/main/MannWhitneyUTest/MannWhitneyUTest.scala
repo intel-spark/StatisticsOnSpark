@@ -35,22 +35,8 @@ object MannWhitneyUTest {
    * href="http://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U"> Mann-Whitney
    * U statistic</a> comparing mean for two independent samples possibly of
    * different length.
-   * <p>
    * This statistic can be used to perform a Mann-Whitney U test evaluating
    * the null hypothesis that the two independent samples has equal mean.
-   * </p>
-   * <p>
-   * Let X<sub>i</sub> denote the i'th individual of the first sample and
-   * Y<sub>j</sub> the j'th individual in the second sample. Note that the
-   * samples would often have different length.
-   * </p>
-   * <p>
-   * <strong>Preconditions</strong>:
-   * <ul>
-   * <li>All observations in the two samples are independent.</li>
-   * <li>The observations are at least ordinal (continuous are also ordinal).</li>
-   * </ul>
-   * </p>
    *
    * @param x the first sample
    * @param y the second sample
@@ -85,26 +71,11 @@ object MannWhitneyUTest {
   }
 
   /**
-   * Returns the asymptotic <i>observed significance level</i>, or <a href=
+   * Returns the asymptotic observed significance level, or <a href=
    * "http://www.cas.lancs.ac.uk/glossary_v1.1/hyptest.html#pvalue">
    * p-value</a>, associated with a <a
    * href="http://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U"> Mann-Whitney
    * U statistic</a> comparing mean for two independent samples.
-   * <p>
-   * Let X<sub>i</sub> denote the i'th individual of the first sample and
-   * Y<sub>j</sub> the j'th individual in the second sample. Note that the
-   * samples would often have different length.
-   * </p>
-   * <p>
-   * <strong>Preconditions</strong>:
-   * <ul>
-   * <li>All observations in the two samples are independent.</li>
-   * <li>The observations are at least ordinal (continuous are also ordinal).</li>
-   * </ul>
-   * </p><p>
-   * Ties give rise to biased variance at the moment. See e.g. <a
-   * href="http://mlsc.lboro.ac.uk/resources/statistics/Mannwhitney.pdf"
-   * >http://mlsc.lboro.ac.uk/resources/statistics/Mannwhitney.pdf</a>.</p>
    *
    * @param x the first sample
    * @param y the second sample
